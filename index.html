@@ -219,8 +219,19 @@ tr.mark td{background:var(--sea-pale)}
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:6px; background:var(--surface); box-shadow:var(--shadow); text-align:center; padding:10px;
 }
-.slot b{font-family:"Noto Serif KR",serif; font-weight:600; font-size:16px; color:var(--ink)}
-.slot small{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.slot b{font-family:"Noto Serif KR",serif; font-weight:600; font-size:16px; color:var(--ink); line-height:1.3}
+.slot small{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+a.slot{text-decoration:none; color:inherit; transition:transform .15s ease, border-color .15s ease}
+a.slot:hover{transform:translateY(-2px); border-color:var(--fire)}
+a.slot .go{font-size:11px; color:var(--fire); font-weight:600; letter-spacing:.06em}
+
+/* ── videos (marathon) ── */
+.vids{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:16px}
+.vid{background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; box-shadow:var(--shadow)}
+.vid .fr{position:relative; aspect-ratio:16/9; background:#1B2420}
+.vid iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.vid .t{font-size:14px; padding:12px 14px; color:var(--ink)}
+.vid .t small{display:block; color:var(--muted); font-size:12px; margin-top:2px}
 
 /* ── apply ── */
 .apply{background:var(--tint); border-block:1px solid var(--line)}
@@ -257,6 +268,7 @@ tr.mark td{background:var(--sea-pale)}
   section{padding-block:48px}
   .tide-grid,.apply-grid,.price,.calc{grid-template-columns:1fr}
   .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vids{grid-template-columns:1fr}
   .fact{padding-right:12px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -376,6 +388,25 @@ tr.mark td{background:var(--sea-pale)}
   </div>
 </section>
 
+<section id="video">
+  <div class="wrap">
+    <div class="eyebrow">명량</div>
+    <h2 class="h2">가기 전에 <span style="color:var(--fire)">보고</span> 가십시오.</h2>
+    <p class="lede">울돌목에 서기 전에 그날 무슨 일이 있었는지 알고 가면 물살이 다르게 보입니다. 축제 공식 영상과 역사 채널 영상을 모아 뒀습니다. <b>전부 각 채널 공식 영상입니다.</b></p>
+
+    <div class="vids">
+      <div class="vid"><div class="fr"><iframe src="https://www.youtube-nocookie.com/embed/9xvuG1vmA9U" title="2026 명량대첩 개막식 진도 승전무대" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="t">2026 명량대첩 개막식 · 진도 승전무대<small>명량대첩축제TV · 축제 공식 채널</small></div></div>
+      <div class="vid"><div class="fr"><iframe src="https://www.youtube-nocookie.com/embed/S-DOHY5BDYU" title="2026 명량대첩 진도 승전무대 주제공연" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="t">2026 명량대첩 · 진도 승전무대 주제공연<small>명량대첩축제TV · 축제 공식 채널</small></div></div>
+      <div class="vid"><div class="fr"><iframe src="https://www.youtube-nocookie.com/embed/hJUOsELJvyc" title="임진왜란 55 — 명량대첩" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="t">임진왜란 55 — 명량대첩<small>황현필 한국사</small></div></div>
+      <div class="vid"><div class="fr"><iframe src="https://www.youtube-nocookie.com/embed/OKueeAx14cE" title="명량해전의 7대 의문점" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="t">임진왜란 56 — 명량해전의 일곱 가지 의문점<small>황현필 한국사</small></div></div>
+      <div class="vid"><div class="fr"><iframe src="https://www.youtube-nocookie.com/embed/2H22ujEcovk" title="임용한의 전쟁사 임진왜란 제8강 — 이순신의 군인정신 명량해전" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="t">임용한의 전쟁사 · 제8강 — 이순신의 군인정신, 명량해전<small>EBS 클래스e</small></div></div>
+      <div class="vid"><div class="fr"><iframe src="https://www.youtube-nocookie.com/embed/8AydwulvueI" title="설민석의 영화 명량 1부 — 전쟁의 신, 이순신" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="t">영화 「명량」 1부 — 전쟁의 신, 이순신<small>설민석</small></div></div>
+    </div>
+
+    <p class="fine">영상은 각 채널이 올린 공식 영상을 그대로 불러옵니다. 저작권은 각 채널에 있습니다.</p>
+  </div>
+</section>
+
 <section id="stay" style="background:var(--tint); border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="eyebrow">후원 · 숙소</div>
@@ -383,37 +414,17 @@ tr.mark td{background:var(--sea-pale)}
     <p class="lede"><b>참가비에 2박이 들어 있습니다.</b> 각자 알아보지 않으셔도 됩니다. 신청서에 인원과 필요한 방 수만 적어 주시면 저희가 단체로 잡아 배정합니다. 가족 단위라 호텔보다 <b>리조트·콘도</b>로 잡습니다. 방 하나에 네 식구가 들어가고 취사가 됩니다.</p>
     <p class="lede">아래가 저희가 잡을 곳입니다. <b>행사에 오지 않고 그냥 여행으로 다녀오실 분은 같은 곳을 직접 예약하셔도 됩니다.</b></p>
 
-    <div class="links">
-      <a href="https://www.sonohotelsresorts.com/solbeach_jd">
-        <span class="city">2일차 · 진도</span>
-        <span class="name">쏠비치 진도</span>
-        <span class="meta">리조트 454실 · 호텔 98실 · 노블리안 24실</span>
-        <span class="go">숙소 보기 →</span>
-      </a>
-      <a href="https://www.theoceanresort.co.kr/">
-        <span class="city">1일차 · 여수</span>
-        <span class="name">디오션리조트 여수</span>
-        <span class="meta">리조트</span>
-        <span class="go">숙소 보기 →</span>
-      </a>
-      <a href="https://www.sonohotelsresorts.com/">
-        <span class="city">1일차 · 여수</span>
-        <span class="name">소노캄 여수</span>
-        <span class="meta">호텔 311실 · 5성</span>
-        <span class="go">숙소 보기 →</span>
-      </a>
-      <div class="row">
-        <span class="city">1일차 · 여수</span>
-        <span class="name">여수베네치아호텔앤스위트 · 신라스테이 여수</span>
-        <span class="meta">각 343실 · 315실 · 4성 · 각 공식 예약</span>
-      </div>
-      <div class="row">
-        <span class="city">해남에 묵으려면</span>
-        <span class="name">해남126 오시아노 · 호텔 울돌소리 · 호텔써던힐</span>
-        <span class="meta">120실(4성) · 32실(3성, 우수영 바로 옆) · 74실(3성)</span>
-      </div>
+    <div class="logos">
+      <a class="slot" href="https://www.sonohotelsresorts.com/solbeach_jd"><b>쏠비치 진도</b><small>2일차 · 진도 · 리조트 454 / 호텔 98 / 노블리안 24</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="https://www.theoceanresort.co.kr/"><b>디오션리조트 여수</b><small>1일차 · 여수 · 리조트</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="https://www.sonohotelsresorts.com/"><b>소노캄 여수</b><small>1일차 · 여수 · 호텔 311실 · 5성</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="https://www.yeosuvenezia.com/"><b>여수 베네치아<br>호텔 앤 스위트</b><small>1일차 · 여수 · 343실 · 4성</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="https://www.shillastay.com/yeosu/index.do"><b>신라스테이 여수</b><small>1일차 · 여수 · 315실 · 4성</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="http://www.haenam126.com/"><b>해남126 오시아노</b><small>해남 · 120실 · 4성</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="http://uldolsori-hotel.com/"><b>호텔 울돌소리</b><small>해남 · 32실 · 3성 · 우수영 바로 옆</small><span class="go">숙소 보기 →</span></a>
+      <a class="slot" href="http://www.southernheal.com/"><b>호텔 써던힐</b><small>해남 · 74실 · 3성</small><span class="go">숙소 보기 →</span></a>
     </div>
-    <div class="note" style="margin-top:22px">💡 <b>정원을 1,000팀으로 잡은 이유가 숙소입니다.</b> 전라남도 남해안에는 가족이 묵을 만한 방이 무한히 있지 않습니다. 인원이 정해져야 단체로 계약이 됩니다.</div>
+
     <p style="margin-top:16px;font-size:14px;color:var(--muted)">객실 수는 호텔업등급결정사업 <span class="mono">2026-09-19</span> 조회 기준입니다. 숙소는 신청 인원에 따라 더 늘어날 수 있습니다.</p>
 
     <div class="eyebrow" style="margin-top:44px">후원 예정</div>

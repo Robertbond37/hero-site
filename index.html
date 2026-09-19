@@ -225,6 +225,19 @@ a.slot{text-decoration:none; color:inherit; transition:transform .15s ease, bord
 a.slot:hover{transform:translateY(-2px); border-color:var(--fire)}
 a.slot .go{font-size:11px; color:var(--fire); font-weight:600; letter-spacing:.06em}
 
+/* ── day timeline (marathon) ── */
+.dayhead{font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--fire); margin:34px 0 14px}
+.dayhead:first-of-type{margin-top:0}
+.days{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px}
+.day{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:24px; box-shadow:var(--shadow)}
+.day h3{font-size:18px; font-weight:700; margin-bottom:4px}
+.day .dt{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); margin-bottom:14px}
+.day ol{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.day li{display:grid; grid-template-columns:62px minmax(0,1fr); gap:12px; align-items:baseline; font-size:14px}
+.day .t{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted)}
+.day .t.now{color:var(--fire); font-weight:600}
+.day b{color:var(--ink)}
+
 /* ── videos (marathon) ── */
 .vids{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:16px}
 .vid{background:var(--surface); border:1px solid var(--line); border-radius:4px; overflow:hidden; box-shadow:var(--shadow)}
@@ -269,6 +282,7 @@ a.slot .go{font-size:11px; color:var(--fire); font-weight:600; letter-spacing:.0
   .tide-grid,.apply-grid,.price,.calc{grid-template-columns:1fr}
   .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vids{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr}
   .fact{padding-right:12px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -390,6 +404,102 @@ a.slot .go{font-size:11px; color:var(--fire); font-weight:600; letter-spacing:.0
   </div>
 </section>
 
+<section id="days">
+  <div class="wrap">
+    <div class="eyebrow">가는 길</div>
+    <h2 class="h2">사흘 동안 <span style="color:var(--fire)">어디를</span> 어떻게 도는지.</h2>
+    <p class="lede">시각은 <b>수도권에서 아침에 출발한다고 보고 잡은 어림값</b>입니다. 교통 상황에 따라 달라집니다. <b>마지막 날만 시계가 아니라 물때에 맞춥니다.</b></p>
+
+    <div class="dayhead">2박 3일 · 2027년 4월 9일(금) ~ 11일(일)</div>
+    <div class="days">
+      <div class="day">
+        <h3>1일차 — 구례 · 곡성</h3>
+        <div class="dt">4월 9일 (금) · 여수 숙박</div>
+        <ol>
+          <li><span class="t">07:00</span><span>수도권 출발 — 구례까지 <b>4시간쯤</b></span></li>
+          <li><span class="t">11:00</span><span><b>구례 석주관</b> 칠의사묘 — 재건로의 첫 고을. 5분이면 봅니다</span></li>
+          <li><span class="t">12:00</span><span>구례 점심</span></li>
+          <li><span class="t">14:00</span><span><b>곡성 섬진강 기차마을</b> — 증기기관차 · 레일바이크. 구례에서 30분쯤</span></li>
+          <li><span class="t">17:30</span><span>여수 도착, 짐 풀기 — 곡성에서 <b>1시간 30분쯤</b></span></li>
+          <li><span class="t">18:30</span><span>여수 저녁</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <h3>2일차 — 순천 · 보성 · 강진</h3>
+        <div class="dt">4월 10일 (토) · 진도 숙박</div>
+        <ol>
+          <li><span class="t">08:00</span><span>숙소 조식</span></li>
+          <li><span class="t">09:30</span><span><b>순천만국가정원</b> — 여수에서 <b>30분쯤</b></span></li>
+          <li><span class="t">12:30</span><span>벌교 점심 — 떡갈비</span></li>
+          <li><span class="t">14:30</span><span>보성 <b>조양창 터 · 열선루</b> — 쌀을 얻은 곳, 「열두 척」 장계를 쓴 자리</span></li>
+          <li><span class="t">16:30</span><span>강진 <b>가우도</b> 출렁다리</span></li>
+          <li><span class="t">18:30</span><span>진도 도착 — 강진에서 <b>1시간 30분쯤</b></span></li>
+          <li><span class="t">19:00</span><span>진도 저녁</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <h3>3일차 — 진도 · 울돌목</h3>
+        <div class="dt">4월 11일 (일) · 귀가</div>
+        <ol>
+          <li><span class="t">08:00</span><span>숙소 조식</span></li>
+          <li><span class="t">09:00</span><span><b>진도 벽파진</b> — 보름 넘게 머문 자리</span></li>
+          <li><span class="t">10:30</span><span><b>진도타워</b></span></li>
+          <li><span class="t">12:00</span><span>진도 점심 — <b>우수영 쪽에는 기준을 넘는 집이 없습니다</b></span></li>
+          <li><span class="t now">물때</span><span><b>우수영 → 울돌목 스카이워크</b>. 진도타워에서 <b>1.6km</b>. 조류예보 최강 시각 앞뒤 한 시간에 서 있도록 나머지를 당기거나 미룹니다</span></li>
+          <li><span class="t">이후</span><span>귀가</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="dayhead">3박 4일 · 2027년 10월 1일(금) ~ 4일(월)</div>
+    <div class="days">
+      <div class="day">
+        <h3>1일차 — 구례 · 곡성</h3>
+        <div class="dt">10월 1일 (금) · 여수 숙박</div>
+        <ol>
+          <li><span class="t">07:00</span><span>수도권 출발</span></li>
+          <li><span class="t">11:00</span><span><b>구례 석주관</b> 칠의사묘</span></li>
+          <li><span class="t">12:00</span><span>구례 점심</span></li>
+          <li><span class="t">14:00</span><span><b>곡성 섬진강 기차마을</b></span></li>
+          <li><span class="t">18:30</span><span>여수 저녁 · 숙박</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <h3>2일차 — 순천 · 보성 · 장흥</h3>
+        <div class="dt">10월 2일 (토) · 해남읍 숙박</div>
+        <ol>
+          <li><span class="t">09:00</span><span><b>순천만국가정원</b> · <b>낙안읍성</b> — 조선 농경마을이 통째로 남아 있습니다</span></li>
+          <li><span class="t">12:30</span><span>벌교 점심</span></li>
+          <li><span class="t">14:30</span><span>보성 <b>조양창 터 · 열선루</b></span></li>
+          <li><span class="t now">16:30</span><span>장흥 <b>회령진성 · 회진항</b> — <b>배 열두 척을 받은 자리</b></span></li>
+          <li><span class="t">19:00</span><span>해남읍 저녁 · 숙박 — 회진항에서 <b>1시간 20분쯤</b></span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <h3>3일차 — 강진 · 진도</h3>
+        <div class="dt">10월 3일 (일) · 진도 숙박</div>
+        <ol>
+          <li><span class="t">09:30</span><span>강진 <b>가우도</b> 출렁다리</span></li>
+          <li><span class="t">13:00</span><span>진도로 — <b>벽파진</b></span></li>
+          <li><span class="t">19:00</span><span>진도 저녁 · 숙박</span></li>
+        </ol>
+      </div>
+      <div class="day">
+        <h3>4일차 — 진도 · 울돌목</h3>
+        <div class="dt">10월 4일 (월) · 귀가</div>
+        <ol>
+          <li><span class="t">09:00</span><span><b>진도타워</b></span></li>
+          <li><span class="t">12:00</span><span>진도 점심</span></li>
+          <li><span class="t now">물때</span><span><b>우수영 → 울돌목 스카이워크</b> · 조류예보 최강 시각</span></li>
+          <li><span class="t">이후</span><span>귀가</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:26px">💡 <b>이동은 전부 자가용입니다.</b> 총 이동 거리는 수도권 왕복을 넣어 <b>약 540km</b>, 고속도로 통행료는 편도 <b>약 14,500원</b>입니다. 차에 오래 앉아 있는 날은 <b>첫날 하루뿐</b>입니다.</div>
+  </div>
+</section>
+
 <section id="video">
   <div class="wrap">
     <div class="eyebrow">명량</div>
@@ -447,19 +557,43 @@ a.slot .go{font-size:11px; color:var(--fire); font-weight:600; letter-spacing:.0
 <section id="food">
   <div class="wrap">
     <div class="eyebrow">식사</div>
-    <h2 class="h2">아침 2회는 참가비에 들어 있습니다</h2>
-    <p class="lede">숙소 조식입니다. <b>점심과 저녁만 고르시면 됩니다.</b> 평점 <b>4.49 이상</b>만 실었고 리뷰 수를 전부 병기했습니다. 평점을 못 구한 항목은 지어내지 않고 「확인 필요」라고 그대로 적었습니다.</p>
+    <h2 class="h2">아침은 <span style="color:var(--fire)">참가비에</span> 들어 있습니다.</h2>
+    <p class="lede">숙소 조식입니다. <b>점심과 저녁만 고르시면 됩니다.</b> 평점 <b>4.49 이상</b>만 실었고 리뷰 수를 전부 병기했습니다. 값은 <b>2026년 9월 19일 조사 기준</b>이고, 못 구한 값은 지어내지 않고 「확인 필요」라고 적었습니다.</p>
 
-    <div class="links">
-      <div class="row"><span class="city">1일차 점심 · 구례</span><span class="name">예원</span><span class="meta">돌솥비빔밥 13,000 · 유아의자 · <span class="mono">4.5 (2건)</span></span></div>
-      <div class="row"><span class="city">1일차 저녁 · 여수</span><span class="name">정다운식당 · 풀뿌리흑두부 · 참일능이</span><span class="meta"><span class="mono">4.6 (32건) · 4.8 (15건) · 4.7 (13건)</span> — 참일능이는 전용 무료주차</span></div>
-      <div class="row"><span class="city">2일차 점심 · 벌교</span><span class="name">해연</span><span class="meta">떡갈비 단품 10,000 · 유아의자 · <span class="mono">5.0 (4건)</span></span></div>
-      <div class="row"><span class="city">2일차 저녁 · 진도</span><span class="name">꽃게선장 낙지박사 · 용문가든</span><span class="meta">대형룸·아기의자·무료픽업 <span class="mono">4.7 (9건)</span> · 백반 12,000 <span class="mono">5.0 (1건)</span></span></div>
-      <div class="row"><span class="city">3일차 점심 · 진도</span><span class="name">꽃피는진도 솥밥</span><span class="meta">전복갈비탕 22,000 · 안 매움 · <span class="mono">4.6 (8건)</span></span></div>
+    <div class="dayhead">2박 3일 · 4월 9일(금) ~ 11일(일)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>때</th><th>어디</th><th>집 · 메뉴 · 값</th><th>평점</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1일차 금<br><span style="color:var(--muted)">점심</span></td><td><b>구례</b></td><td><b>예원</b> 돌솥비빔밥 13,000 · 산채정식 18,000 — <b>유아의자</b><br><b>구례다슬기</b> 다슬기순두부찌개 10,000 · <b>지리산부부솥밥</b> 쑥부쟁이솥밥 15,000 — 개별룸</td><td class="mono">4.5 (2)<br>5.0 (2) · 4.5 (6)</td></tr>
+        <tr class="mark"><td class="mono">1일차 금<br><span style="color:var(--muted)">저녁</span></td><td><b>여수</b></td><td><b>풀뿌리흑두부</b> — 아이 확실 · <b>전용 무료주차</b><br><b>정다운식당</b> — 전용 무료주차 · <b>참일능이 여천점</b> 백숙 — 아이 확실<br><b>육지향</b> — <b>70석</b> · 전용 무료주차</td><td class="mono">4.8 (15)<br>4.6 (32) · 4.7 (13)<br>4.6 (7)</td></tr>
+        <tr><td class="mono">2일차 토<br><span style="color:var(--muted)">점심</span></td><td><b>벌교</b></td><td><b>해연</b> 한정식 22,000~ · <b>떡갈비 단품 10,000</b> — 유아의자 + 개별룸<br><b>홍교꼬막회관</b> 새꼬막정식 20,000 — ⚠️ 주차 불가</td><td class="mono">5.0 (4)<br>5.0 (1)</td></tr>
+        <tr class="mark"><td class="mono">2일차 토<br><span style="color:var(--muted)">저녁</span></td><td><b>진도</b></td><td><b>꽃게선장 낙지박사</b> — 대형룸 · 아기의자 · <b>무료 픽업</b> · 쏠비치에서 차 5분<br><b>꽃피는전복식당2</b> · <b>바닷가그집</b> · <b>한끄니</b><br><b>서우담</b>(진도읍) — <b>250~300명 연회장</b></td><td class="mono">4.7 (9)<br>4.9 (4) · 4.7 (3) · 4.7 (3)<br>4.5 (3)</td></tr>
+        <tr><td class="mono">3일차 일<br><span style="color:var(--muted)">점심</span></td><td><b>진도</b></td><td><b>수품어장</b> 생선구이백반 15,000(2인~) · 간재미무침 17,000 — 유아의자<br><b>진도아리랑회센터</b> 아리랑밥상 4인 80,000 — 유아의자</td><td class="mono">5.0 (1)<br>5.0 (1)</td></tr>
+      </tbody>
+    </table>
     </div>
+    <div class="note" style="margin-top:18px">⚠️ <b>3일차가 일요일이라 「꽃피는진도 솥밥」은 쉽니다.</b> 진도 점심은 위 두 곳으로 잡으십시오. <b>용문가든은 주말 15시에 닫습니다.</b></div>
 
-    <div class="note" style="margin-top:22px">⚠️ <b>지방 식당은 브레이크타임이 두 시간씩 되고 격주 휴무도 있습니다. 가기 전에 전화하십시오.</b></div>
-    <div class="note">⚠️ <b>우수영 쪽에는 기준을 넘는 집이 없습니다.</b> 마지막 날 점심은 진도에서 드시고 출발하십시오.</div>
+    <div class="dayhead">3박 4일 · 10월 1일(금) ~ 4일(월)</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>때</th><th>어디</th><th>집 · 메뉴 · 값</th><th>평점</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1일차 금<br><span style="color:var(--muted)">점심</span></td><td><b>구례</b></td><td><b>예원</b> 돌솥비빔밥 13,000 — 유아의자 · <b>구례다슬기</b> 10,000</td><td class="mono">4.5 (2) · 5.0 (2)</td></tr>
+        <tr class="mark"><td class="mono">1일차 금<br><span style="color:var(--muted)">저녁</span></td><td><b>여수</b></td><td><b>풀뿌리흑두부</b> · <b>정다운식당</b> · <b>참일능이</b> · <b>육지향</b>(70석) — 전부 전용 무료주차</td><td class="mono">4.8 (15) · 4.6 (32)<br>4.7 (13) · 4.6 (7)</td></tr>
+        <tr><td class="mono">2일차 토<br><span style="color:var(--muted)">점심</span></td><td><b>벌교</b></td><td><b>해연</b> 떡갈비 단품 10,000 — 유아의자 + 개별룸</td><td class="mono">5.0 (4)</td></tr>
+        <tr class="mark"><td class="mono">2일차 토<br><span style="color:var(--muted)">저녁</span></td><td><b>해남읍</b></td><td><b>돌고개가든</b> 토종닭·오리주물럭 80,000 — 아기의자 + 좌식 + 룸 · <b>연중무휴, 브레이크타임 없음</b><br><b>해물밭에 노는 닭</b> 80,000 — 룸 + <b>놀이방</b> · <b>소망식당</b> 1인 16,000 — 개별룸</td><td class="mono">5.0 (2)<br>5.0 (2) · 4.7 (16)</td></tr>
+        <tr><td class="mono">3일차 일<br><span style="color:var(--muted)">저녁</span></td><td><b>진도</b></td><td><b>꽃게선장 낙지박사</b> — 대형룸 · 무료 픽업 · <b>서우담</b> 250~300명 연회장</td><td class="mono">4.7 (9) · 4.5 (3)</td></tr>
+        <tr class="mark"><td class="mono">4일차 월<br><span style="color:var(--muted)">점심</span></td><td><b>진도</b></td><td><b>꽃피는진도 솥밥</b> 전복솥밥 16,000 · <b>전복갈비탕 22,000 — 안 맵습니다</b> · 유아의자</td><td class="mono">4.6 (8)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note" style="margin-top:18px">⚠️ <b>4일차가 월요일이라 「수품어장」과 「한끄니」는 쉽니다.</b> 진도 점심은 꽃피는진도 솥밥으로 잡으십시오.</div>
+
+    <div class="note">⚠️ <b>지방 식당은 브레이크타임이 두 시간씩 되고 격주 휴무도 있습니다. 가기 전에 전화하십시오.</b> 해연은 격주로 월·화에 쉽니다.</div>
+    <div class="note">⚠️ <b>우수영 쪽에는 기준을 넘는 집이 없습니다.</b> 조사한 여섯 곳이 전부 미달이었습니다. 마지막 날 점심은 <b>진도에서 드시고 출발</b>하십시오.</div>
+    <p class="fine">각 집의 실제 좌석 수와 단체 예약 조건은 저희가 전화로 확인해 배정합니다. 개인으로 가시는 분은 직접 전화해 확인하십시오.</p>
   </div>
 </section>
 

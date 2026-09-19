@@ -187,6 +187,32 @@ tr.mark td{background:var(--sea-pale)}
 .note + .note{margin-top:12px}
 .note b{font-weight:700}
 
+/* ── deposit / condition ── */
+.cond{border-top:1px solid var(--line); margin-bottom:24px}
+.cond .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:6px 20px; padding:16px 2px; border-bottom:1px solid var(--line); align-items:baseline}
+.cond .when{font-weight:700; color:var(--ink); font-size:16px}
+.cond .what{font-size:15px; color:var(--body)}
+.cond .row.go .when{color:var(--fire)}
+.price{
+  background:var(--surface); border:1px solid var(--line); border-radius:4px;
+  box-shadow:var(--shadow); padding:26px; display:grid; gap:6px 24px;
+  grid-template-columns:minmax(0,1fr) auto; align-items:center;
+}
+.price .lbl{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.price .amt{font-family:"IBM Plex Mono",monospace; font-size:clamp(24px,4vw,34px); font-weight:600; color:var(--ink); line-height:1.2}
+.price .amt small{display:block; font-family:"Noto Sans KR",sans-serif; font-size:14px; font-weight:400; color:var(--muted); letter-spacing:0; margin-top:6px}
+.price .act{grid-column:2; grid-row:1 / span 2; text-align:right}
+
+/* ── sponsors ── */
+.logos{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px}
+.slot{
+  aspect-ratio:5/2; border:1px solid var(--line); border-radius:4px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; background:var(--surface); box-shadow:var(--shadow); text-align:center; padding:10px;
+}
+.slot b{font-family:"Noto Serif KR",serif; font-weight:600; font-size:16px; color:var(--ink)}
+.slot small{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+
 /* ── apply ── */
 .apply{background:var(--tint); border-block:1px solid var(--line)}
 .apply-grid{display:grid; gap:30px; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start}
@@ -217,7 +243,9 @@ tr.mark td{background:var(--sea-pale)}
 
 @media (max-width:760px){
   section{padding-block:48px}
-  .tide-grid,.apply-grid{grid-template-columns:1fr}
+  .tide-grid,.apply-grid,.cond .row,.price{grid-template-columns:1fr}
+  .price .act{grid-column:1; grid-row:auto; text-align:left; margin-top:6px}
+  .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fact{padding-right:12px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -232,7 +260,7 @@ tr.mark td{background:var(--sea-pale)}
     <p class="hero-sub">1597년, 이순신은 배 한 척 없이 마흔네 날 동안 오백 킬로미터를 다니며 군대를 다시 만들었습니다. <b>그 길을 가족이 차로 되짚고, 마지막 날 울돌목에서 완주 인증을 받습니다.</b> 숙소는 <b>저희가 단체로 잡아 드립니다.</b></p>
 
     <dl class="facts">
-      <div class="fact"><dt>개최</dt><dd>2027년 명량대첩축제 기간<small>날짜 확정되면 이 페이지에 올립니다</small></dd></div>
+      <div class="fact"><dt>개최</dt><dd><span class="mono">1,000</span>팀 차면 바로<small>미달 시 2027년 4월 9~11일</small></dd></div>
       <div class="fact"><dt>정원</dt><dd><span class="mono">1,000</span>팀<small>한 팀 = 한 가족</small></dd></div>
       <div class="fact"><dt>종목</dt><dd>2박 3일 · 3박 4일<small>부분 인증 있음</small></dd></div>
       <div class="fact"><dt>숙소</dt><dd>저희가 예약합니다<small>단체로 잡아 배정</small></dd></div>
@@ -243,7 +271,7 @@ tr.mark td{background:var(--sea-pale)}
     <div class="cta-row">
       <a class="btn" href="#apply">사전 신청하기</a>
       <a class="btn ghost" href="#course">코스 먼저 보기</a>
-      <span class="cta-note">사전 신청만 받습니다. 지금 결제하실 것은 없습니다.</span>
+      <span class="cta-note">숙소를 미리 잡으려고 <b style="color:var(--band-ink);font-weight:500">계약금</b>을 받습니다. 열리지 않으면 전액 환불합니다.</span>
     </div>
   </div>
 </header>
@@ -320,9 +348,10 @@ tr.mark td{background:var(--sea-pale)}
     <div class="tide-grid">
       <div>
         <table>
-          <caption class="mono" style="text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-bottom:8px">2027년 가을 · 사리가 주말에 걸리는 날</caption>
+          <caption class="mono" style="text-align:left;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-bottom:8px">2027년 · 사리가 주말에 걸리는 날</caption>
           <thead><tr><th>후보</th><th>물때</th></tr></thead>
           <tbody>
+            <tr class="mark"><td class="mono">4월 9 ~ 11일<br><span style="color:var(--muted)">금 · 토 · 일</span></td><td>4월 7일 그믐 → <b>9~10일 사리 절정</b> — <b>미달 시 이 날짜로 시작합니다</b></td></tr>
             <tr class="mark"><td class="mono">9월 17 ~ 19일<br><span style="color:var(--muted)">금 · 토 · 일</span></td><td>9월 16일 보름 → <b>17~18일 사리 절정</b></td></tr>
             <tr class="mark"><td class="mono">10월 1 ~ 3일<br><span style="color:var(--muted)">금 · 토 · 일</span></td><td>9월 30일 그믐 → <b>1~2일 사리 절정</b></td></tr>
           </tbody>
@@ -397,11 +426,36 @@ tr.mark td{background:var(--sea-pale)}
   </div>
 </section>
 
+<section id="deposit" style="background:var(--tint); border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">계약금과 개최 조건</div>
+    <h2 class="h2">숙소를 미리 잡으려면 선금이 들어갑니다</h2>
+    <p class="lede">전라남도 남해안에 가족이 묵을 방은 무한하지 않습니다. 단체로 묶으려면 <b>날짜와 방 수를 확정해 계약</b>해야 하고, 그때 선금이 들어갑니다. 그래서 계약금을 받습니다. <b>계약금은 숙소 선금으로만 씁니다.</b></p>
+
+    <div class="cond">
+      <div class="row go"><span class="when">1,000팀이 차면</span><span class="what"><b>그다음 사리 주말에 바로 엽니다.</b> 날짜는 차는 즉시 이 페이지에 올리고, 신청하신 분께 따로 알려 드립니다.</span></div>
+      <div class="row"><span class="when">1,000팀이 안 차면</span><span class="what"><b>2027년 4월 9일(금) ~ 11일(일)</b>에 시작합니다. <span class="mono">4월 7일 그믐 → 9~10일 사리 절정</span></span></div>
+      <div class="row"><span class="when">그때도 모자라면</span><span class="what"><b>계약금은 전액 돌려드립니다.</b> 조건 없이 그대로 환불합니다.</span></div>
+    </div>
+
+    <div class="price">
+      <div>
+        <div class="lbl">계약금 · 한 팀</div>
+        <div class="amt">금액 공지 예정<small>숙소 단체 계약 단가가 나오는 대로 이 자리에 올립니다.</small></div>
+      </div>
+      <div class="act"><a class="btn" href="#apply">사전 신청 먼저 하기</a></div>
+    </div>
+
+    <div class="note" style="margin-top:22px">💡 <b>참가비는 계약금과 별개입니다.</b> 숙소 단가가 확정되면 팀별 참가비를 계산해 알려 드리고, <b>이미 내신 계약금은 거기서 뺍니다.</b> 그 금액을 보고 그만두셔도 됩니다.</div>
+    <p style="margin-top:16px;font-size:14px;color:var(--muted)">결제는 <b>리빙루트37 상점</b>(livingroute37.com)에서 카드·간편결제로 받습니다. 본래 계획은 <b>2027년 명량대첩축제 기간</b>에 맞추는 것이고, 축제 날짜가 나오면 이 페이지에 올립니다.</p>
+  </div>
+</section>
+
 <section class="apply" id="apply">
   <div class="wrap">
     <div class="eyebrow">참가 신청</div>
     <h2 class="h2"><span class="mono">1,000</span>팀 사전 신청을 받습니다</h2>
-    <p class="lede">지금 결제하실 것은 없습니다. <b>인원이 모이면 저희가 숙소를 단체로 계약하고, 그때 참가비와 배정된 숙소를 알려 드립니다.</b> 그 금액을 보고 그만두셔도 됩니다.</p>
+    <p class="lede">먼저 신청서를 내시면 <b>계약금 안내를 보내 드립니다.</b> 계약금은 숙소 선금으로만 쓰고, <b>열리지 않으면 전액 돌려드립니다.</b> 참가비는 숙소 단가가 확정된 뒤 계산해 알려 드리고, 계약금은 거기서 뺍니다.</p>
 
     <div class="apply-grid">
       <div>
@@ -423,6 +477,25 @@ tr.mark td{background:var(--sea-pale)}
   </div>
 </section>
 
+<section id="sponsor">
+  <div class="wrap">
+    <div class="eyebrow">후원</div>
+    <h2 class="h2">후원 협의 중</h2>
+    <p class="lede">코스가 지나는 지자체에 후원을 요청하고 있습니다. <b>확정되는 대로 이 자리에 로고를 올립니다.</b> 아직 확정된 곳은 없습니다.</p>
+
+    <div class="logos">
+      <div class="slot"><b>구례군</b><small>협의 중</small></div>
+      <div class="slot"><b>곡성군</b><small>협의 중</small></div>
+      <div class="slot"><b>순천시</b><small>협의 중</small></div>
+      <div class="slot"><b>보성군</b><small>협의 중</small></div>
+      <div class="slot"><b>장흥군</b><small>협의 중</small></div>
+      <div class="slot"><b>진도군</b><small>협의 중</small></div>
+      <div class="slot"><b>해남군</b><small>협의 중</small></div>
+      <div class="slot"><b>전라남도</b><small>협의 중</small></div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="closing">
@@ -433,8 +506,8 @@ tr.mark td{background:var(--sea-pale)}
     <p>사람이 모이면 지역에도 좋고, 가는 분들도 좋습니다. <b style="color:var(--band-ink);font-weight:500">이 모든 일이 2025after의 기치 아래 움직입니다.</b></p>
 
     <div class="sign">
-      <span><b>TripRoute37</b> · 여행! 아는 만큼 재밌다</span>
-      <span><a href="https://triproute37.com">triproute37.com</a></span>
+      <span><b>트립루트37</b> · 개최</span>
+      <span>같이 만드는 곳 — <a href="https://2025after.com/">2025after</a> · <a href="https://triproute37.com/">트립루트37</a> · <a href="https://livingroute37.com/">리빙루트37</a></span>
       <span><a href="mailto:livingroute37@gmail.com">livingroute37@gmail.com</a></span>
     </div>
   </div>

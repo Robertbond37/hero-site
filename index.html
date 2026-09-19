@@ -187,21 +187,30 @@ tr.mark td{background:var(--sea-pale)}
 .note + .note{margin-top:12px}
 .note b{font-weight:700}
 
-/* ── deposit / condition ── */
-.cond{border-top:1px solid var(--line); margin-bottom:24px}
-.cond .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:6px 20px; padding:16px 2px; border-bottom:1px solid var(--line); align-items:baseline}
-.cond .when{font-weight:700; color:var(--ink); font-size:16px}
-.cond .what{font-size:15px; color:var(--body)}
-.cond .row.go .when{color:var(--fire)}
-.price{
-  background:var(--surface); border:1px solid var(--line); border-radius:4px;
-  box-shadow:var(--shadow); padding:26px; display:grid; gap:6px 24px;
-  grid-template-columns:minmax(0,1fr) auto; align-items:center;
-}
-.price .lbl{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
-.price .amt{font-family:"IBM Plex Mono",monospace; font-size:clamp(24px,4vw,34px); font-weight:600; color:var(--ink); line-height:1.2}
-.price .amt small{display:block; font-family:"Noto Sans KR",sans-serif; font-size:14px; font-weight:400; color:var(--muted); letter-spacing:0; margin-top:6px}
-.price .act{grid-column:2; grid-row:1 / span 2; text-align:right}
+/* ── price (marathon) ── */
+.price{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch}
+.pbox{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:30px 28px; box-shadow:var(--shadow)}
+.pbox .big{font-family:"Noto Serif KR",serif; font-size:48px; font-weight:900; line-height:1.1; color:var(--ink)}
+.pbox .big small{font-size:18px; font-weight:700; color:var(--muted); margin-left:6px}
+.pbox .sub{margin-top:8px; color:var(--muted); font-size:15px}
+.pbox.alt{background:var(--fire-soft); border-color:transparent}
+.pbox.alt .big{color:var(--fire)}
+.incl{margin:22px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px}
+.incl li{font-size:13px; border:1px solid var(--line); border-radius:3px; padding:4px 10px; color:var(--muted); background:var(--surface)}
+.fine{font-size:13px; color:var(--muted); margin-top:18px; line-height:1.7}
+
+/* ── calculator (marathon) ── */
+.calc{background:var(--surface); border:1px solid var(--line); border-radius:4px; box-shadow:var(--shadow); padding:30px 28px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px}
+.calc .f{display:grid; gap:14px; align-content:start}
+.calc label{font-size:14px; color:var(--muted); display:grid; gap:6px}
+.calc select,.calc input[type=text],.calc input[type=email]{font:inherit; font-size:16px; padding:10px 12px; border:1px solid var(--line); border-radius:4px; background:var(--paper); color:var(--ink); width:100%}
+.calc .sum{background:var(--tint); border-radius:4px; padding:22px}
+.calc .sum .row{display:flex; justify-content:space-between; gap:12px; font-size:14px; color:var(--muted); padding:6px 0; border-bottom:1px dashed var(--line)}
+.calc .sum .tot{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-top:14px}
+.calc .sum .tot b{font-family:"Noto Serif KR",serif; font-size:clamp(24px,4vw,34px); font-weight:900; color:var(--ink)}
+.calc .sum .tot span{color:var(--muted); font-size:14px}
+.calc .pay{margin-top:18px; width:100%; border:0; cursor:pointer; font:inherit; text-align:center}
+.calc .note{font-size:12px; color:var(--muted); margin-top:12px; line-height:1.6}
 
 /* ── sponsors ── */
 .logos{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px}
@@ -232,19 +241,21 @@ tr.mark td{background:var(--sea-pale)}
 .closing h2{color:var(--band-ink); font-size:clamp(22px,3.2vw,30px); font-weight:900; margin-bottom:18px; max-width:24ch}
 .closing h2 em{font-style:normal; color:var(--fire)}
 .closing p{color:var(--band-muted); max-width:60ch; margin-bottom:14px}
-.closing .sign{
-  margin-top:30px; padding-top:22px; border-top:1px solid var(--band-line);
-  font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--band-muted);
-  display:flex; flex-wrap:wrap; gap:6px 22px;
-}
-.closing .sign b{color:var(--band-ink); font-weight:600}
+.closing .who{display:flex; flex-wrap:wrap; gap:34px; margin-top:38px; align-items:center; color:var(--band-muted); font-size:14px}
+.closing .who .lg{display:flex; align-items:center; gap:10px; color:var(--band-ink)}
+.closing .who svg{width:34px; height:34px; flex:0 0 auto; color:var(--band-ink)}
+.closing .who b{font-weight:500; color:var(--band-ink)}
+.closing .sites{margin-top:40px; padding-top:28px; border-top:1px solid var(--band-line); display:flex; flex-wrap:wrap; gap:12px 36px; align-items:flex-start; font-size:14px}
+.closing .sites .k{flex-basis:100%; font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--band-muted)}
+.closing .sites a{color:var(--band-ink); text-decoration:none; border:0; display:flex; flex-direction:column; gap:2px}
+.closing .sites a small{color:var(--band-muted); font-size:12px}
+.closing .sites a:hover{color:var(--fire)}
+.closing .foot{margin-top:26px; font-size:12px; color:var(--band-muted); line-height:1.8}
 .closing a{color:var(--fire); text-decoration:none; border-bottom:1px solid currentColor}
 
 @media (max-width:760px){
   section{padding-block:48px}
-  .tide-grid,.apply-grid,.cond .row,.price{grid-template-columns:1fr}
-  .price .act{grid-column:1; grid-row:auto; text-align:left; margin-top:6px}
+  .tide-grid,.apply-grid,.price,.calc{grid-template-columns:1fr}
   .logos{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fact{padding-right:12px}
 }
@@ -367,7 +378,7 @@ tr.mark td{background:var(--sea-pale)}
 
 <section id="stay" style="background:var(--tint); border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="eyebrow">숙소</div>
+    <div class="eyebrow">후원 · 숙소</div>
     <h2 class="h2">숙소는 저희가 예약합니다</h2>
     <p class="lede"><b>참가비에 2박이 들어 있습니다.</b> 각자 알아보지 않으셔도 됩니다. 신청서에 인원과 필요한 방 수만 적어 주시면 저희가 단체로 잡아 배정합니다. 가족 단위라 호텔보다 <b>리조트·콘도</b>로 잡습니다. 방 하나에 네 식구가 들어가고 취사가 됩니다.</p>
     <p class="lede">아래가 저희가 잡을 곳입니다. <b>행사에 오지 않고 그냥 여행으로 다녀오실 분은 같은 곳을 직접 예약하셔도 됩니다.</b></p>
@@ -404,6 +415,19 @@ tr.mark td{background:var(--sea-pale)}
     </div>
     <div class="note" style="margin-top:22px">💡 <b>정원을 1,000팀으로 잡은 이유가 숙소입니다.</b> 전라남도 남해안에는 가족이 묵을 만한 방이 무한히 있지 않습니다. 인원이 정해져야 단체로 계약이 됩니다.</div>
     <p style="margin-top:16px;font-size:14px;color:var(--muted)">객실 수는 호텔업등급결정사업 <span class="mono">2026-09-19</span> 조회 기준입니다. 숙소는 신청 인원에 따라 더 늘어날 수 있습니다.</p>
+
+    <div class="eyebrow" style="margin-top:44px">후원 예정</div>
+    <div class="logos">
+      <div class="slot"><b>구례군</b><small>협의 중</small></div>
+      <div class="slot"><b>곡성군</b><small>협의 중</small></div>
+      <div class="slot"><b>순천시</b><small>협의 중</small></div>
+      <div class="slot"><b>보성군</b><small>협의 중</small></div>
+      <div class="slot"><b>장흥군</b><small>협의 중</small></div>
+      <div class="slot"><b>진도군</b><small>협의 중</small></div>
+      <div class="slot"><b>해남군</b><small>협의 중</small></div>
+      <div class="slot"><b>전라남도</b><small>협의 중</small></div>
+    </div>
+    <p class="fine">코스가 지나는 지자체에 후원을 요청하고 있습니다. 확정되는 대로 로고를 올립니다.</p>
   </div>
 </section>
 
@@ -429,70 +453,64 @@ tr.mark td{background:var(--sea-pale)}
 <section id="price" style="background:var(--tint); border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="eyebrow">참가비</div>
-    <h2 class="h2">한 팀 <span class="mono">870,000</span>원</h2>
-    <p class="lede">가족 단위 <b>2박 3일 기준</b>입니다. <b>숙박 2박과 아침 2회가 들어 있습니다.</b> 숙소는 저희가 단체로 잡아 배정합니다.</p>
+    <h2 class="h2">한 가족이 <span style="color:var(--fire)">한 팀</span>입니다.</h2>
+    <p class="lede">숙소는 저희가 단체로 잡아 배정합니다. 방 하나에 네 식구가 들어가는 리조트·콘도입니다.</p>
 
     <div class="price">
-      <div>
-        <div class="lbl">한 팀 · 2박 3일</div>
-        <div class="amt">870,000원<small>리조트·콘도 2박 · 아침 2회 · 구간 인증 · 완주 인증</small></div>
+      <div class="pbox">
+        <div class="big">87<small>만 원</small></div>
+        <div class="sub">한 팀 · <b>2박 3일</b> · 리조트·콘도 한 방</div>
+        <ul class="incl">
+          <li>리조트·콘도 2박</li>
+          <li>아침 2회</li>
+          <li>구간 인증</li>
+          <li>울돌목 완주 인증</li>
+          <li>신청 기념품</li>
+        </ul>
       </div>
-      <div class="act"><a class="btn" href="#apply">신청서 쓰기</a></div>
+      <div class="pbox alt">
+        <div class="big">+ 1박</div>
+        <div class="sub"><b>3박 4일</b>은 하루치 숙박이 더해집니다. 구례 석주관과 장흥 회령진성까지 도는 완주 종목입니다.</div>
+        <p class="fine" style="margin-top:22px">3박 4일 금액은 숙소 단체 계약 단가가 나오는 대로 이 자리에 올립니다.</p>
+      </div>
     </div>
 
-    <div class="cond" style="margin-top:26px">
-      <div class="row"><span class="when">들어 있는 것</span><span class="what">리조트·콘도 <b>2박</b>(한 방에 네 식구) · <b>아침 2회</b> · 구간 인증 · 울돌목 완주 인증 · <b>신청하시면 기념품</b></span></div>
-      <div class="row"><span class="when">따로 내시는 것</span><span class="what">이동(자가용) · 점심과 저녁 · 관람 입장료. 점심·저녁은 <a href="#food" style="color:var(--fire);font-weight:500">아래 식당 표</a>에 값까지 적어 뒀습니다.</span></div>
-      <div class="row go"><span class="when">1,000팀이 모이면</span><span class="what"><b>그다음 사리 주말에 바로 엽니다.</b> 날짜는 차는 즉시 이 페이지에 올리고, 신청하신 분께 따로 알려 드립니다.</span></div>
-      <div class="row"><span class="when">1,000팀이 안 차면</span><span class="what"><b>2027년 4월 9일(금) ~ 11일(일)</b>에 시작합니다. <span class="mono">4월 7일 그믐 → 9~10일 사리 절정</span></span></div>
-      <div class="row"><span class="when">그때도 모자라면</span><span class="what"><b>전액 환불합니다.</b> 조건 없이 그대로 돌려드립니다.</span></div>
-    </div>
-
-    <p style="margin-top:20px;font-size:14px;color:var(--muted)">3박 4일은 하루치 숙박이 더해집니다. 금액은 곧 올립니다. 결제는 <b>리빙루트37 상점</b>(livingroute37.com)에서 카드·간편결제로 받습니다. 본래 계획은 <b>2027년 명량대첩축제 기간</b>에 맞추는 것이고, 축제 날짜가 나오면 이 페이지에 올립니다.</p>
+    <p class="fine"><b>1,000팀이 모이면 그다음 사리 주말에 바로 엽니다. 1,000팀이 안 차면 2027년 4월 9~11일에 시작합니다. 그에 못 미치면 전액 환불합니다.</b><br>이동은 자가용이고, 점심·저녁과 관람 입장료는 따로 내십니다. 점심·저녁은 <a href="#food" style="color:var(--fire);font-weight:500">아래 식당 표</a>에 값까지 적어 뒀습니다. 본래 계획은 2027년 명량대첩축제 기간에 맞추는 것이고, 축제 날짜가 나오면 이 페이지에 올립니다.</p>
   </div>
 </section>
 
 <section class="apply" id="apply">
   <div class="wrap">
-    <div class="eyebrow">참가 신청</div>
-    <h2 class="h2"><span class="mono">1,000</span>팀 사전 신청을 받습니다</h2>
-    <p class="lede">신청서를 내시면 <b>바로 결제 화면으로 이어집니다.</b> 한 팀 <b>870,000원</b>, 2박 숙박과 아침 2회가 들어 있습니다. <b>신청하시면 기념품을 드리고, 열리지 않으면 전액 돌려드립니다.</b></p>
+    <div class="eyebrow">신청</div>
+    <h2 class="h2">종목만 고르면 <span style="color:var(--fire)">금액</span>이 나옵니다.</h2>
 
-    <div class="apply-grid">
-      <div>
-        <a class="btn" style="font-size:17px;padding:16px 32px" href="https://docs.google.com/forms/d/e/1FAIpQLSegS7PJEVtytLLYGbb3OkIgtdB4KJ9Jy0JwW6trtTLQVujtHg/viewform">신청서 작성하기</a>
-        <p style="font-size:15px;color:var(--muted);margin-top:18px">2분이면 끝납니다. 적어 주신 내용은 <b>숙소 단체 계약과 대회 준비에만</b> 씁니다. 결제는 리빙루트37 상점에서 카드·간편결제로.</p>
-        <p style="font-size:15px;color:var(--muted);margin-top:10px">물어보실 것이 있으면 <a href="mailto:livingroute37@gmail.com?subject=%EC%9D%B4%EC%88%9C%EC%8B%A0%20%EB%A1%9C%EB%93%9C%20%EB%AC%B8%EC%9D%98" style="color:var(--fire);font-weight:500">livingroute37@gmail.com</a></p>
+    <div class="calc">
+      <div class="f">
+        <label>종목<select id="course">
+          <option value="2">2박 3일 — 아이와 함께</option>
+          <option value="3">3박 4일 — 완주</option>
+        </select></label>
+        <label>어른 수<select id="adults">
+          <option value="1">1명</option><option value="2" selected>2명</option><option value="3">3명</option><option value="4">4명 이상</option>
+        </select></label>
+        <label>아이 수 (만 18세까지)<select id="kids">
+          <option value="0">없음</option><option value="1">1명</option><option value="2" selected>2명</option><option value="3">3명 이상</option>
+        </select></label>
+        <label>필요한 방 수<select id="rooms">
+          <option value="1" selected>1개</option><option value="2">2개</option><option value="3">3개 이상</option>
+        </select></label>
+        <label>대표자 이름<input type="text" id="name" autocomplete="name" placeholder="김○○"></label>
+        <label>이메일<input type="email" id="email" autocomplete="email" placeholder="you@example.com"></label>
       </div>
-      <div>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:6px">신청서에 적으실 것</p>
-        <ul class="checklist">
-          <li><b>2박 3일</b> / <b>3박 4일</b> 중 어느 쪽</li>
-          <li>신청자 이름 · 이메일 · 전화번호</li>
-          <li>어른 인원, 아이 인원과 나이대</li>
-          <li>필요한 <b>방 수</b></li>
-          <li>2027년 <b>가을 주말</b>이면 괜찮으신지</li>
-        </ul>
+      <div class="sum">
+        <div class="row"><span id="baselabel">한 팀 · 2박 3일</span><span id="basefee">870,000원</span></div>
+        <div class="row"><span>숙박</span><span id="nights">리조트·콘도 2박</span></div>
+        <div class="row"><span>아침</span><span id="meals">2회</span></div>
+        <div class="row"><span>기념품</span><span>신청하시면 드립니다</span></div>
+        <div class="tot"><span>합계</span><b id="total">870,000원</b></div>
+        <a class="btn pay" id="pay" href="https://docs.google.com/forms/d/e/1FAIpQLSegS7PJEVtytLLYGbb3OkIgtdB4KJ9Jy0JwW6trtTLQVujtHg/viewform">신청서 쓰기 · 870,000원</a>
+        <div class="note">신청서를 내면 결제 안내를 보내 드립니다. 결제는 리빙루트37 상점(livingroute37.com)에서 카드·간편결제로. 1,000팀이 모이면 그다음 사리 주말, 안 차면 2027년 4월 9~11일 개최. 그에 못 미치면 전액 환불.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="sponsor">
-  <div class="wrap">
-    <div class="eyebrow">후원</div>
-    <h2 class="h2">후원 협의 중</h2>
-    <p class="lede">코스가 지나는 지자체에 후원을 요청하고 있습니다. <b>확정되는 대로 이 자리에 로고를 올립니다.</b> 아직 확정된 곳은 없습니다.</p>
-
-    <div class="logos">
-      <div class="slot"><b>구례군</b><small>협의 중</small></div>
-      <div class="slot"><b>곡성군</b><small>협의 중</small></div>
-      <div class="slot"><b>순천시</b><small>협의 중</small></div>
-      <div class="slot"><b>보성군</b><small>협의 중</small></div>
-      <div class="slot"><b>장흥군</b><small>협의 중</small></div>
-      <div class="slot"><b>진도군</b><small>협의 중</small></div>
-      <div class="slot"><b>해남군</b><small>협의 중</small></div>
-      <div class="slot"><b>전라남도</b><small>협의 중</small></div>
     </div>
   </div>
 </section>
@@ -506,12 +524,46 @@ tr.mark td{background:var(--sea-pale)}
     <p>저희가 행사를 여는 건 여행 초보자가 <b style="color:var(--band-ink);font-weight:500">한 번 경험하고 나면 그다음부터는 스스로 다닐 수 있게</b> 하려는 것입니다. 저희 기획이 개인으로 가는 것보다 싸고 좋으면 오시면 되고, 그렇지 않으면 이 페이지만 들고 혼자 가셔도 됩니다. 어느 쪽이든 정보는 똑같이 공개합니다.</p>
     <p>사람이 모이면 지역에도 좋고, 가는 분들도 좋습니다. <b style="color:var(--band-ink);font-weight:500">이 모든 일이 2025after의 기치 아래 움직입니다.</b></p>
 
-    <div class="sign">
-      <span><b>트립루트37</b> · 개최</span>
-      <span>같이 만드는 곳 — <a href="https://2025after.com/">2025after</a> · <a href="https://triproute37.com/">트립루트37</a> · <a href="https://livingroute37.com/">리빙루트37</a></span>
-      <span><a href="mailto:livingroute37@gmail.com">livingroute37@gmail.com</a></span>
+    <div class="who">
+      <div class="lg"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M 120 42 A 78 78 0 1 1 42 120" fill="none" stroke="#3E9E5B" stroke-width="24" stroke-linecap="round"/><path d="M 42 120 A 78 78 0 0 1 120 42" fill="none" stroke="#EF7A2E" stroke-width="24" stroke-linecap="round"/><path d="M 120 14 C 137 14 150 27 150 44 C 150 64 120 90 120 90 C 120 90 90 64 90 44 C 90 27 103 14 120 14 Z" fill="#EF7A2E"/><circle cx="120" cy="44" r="10" fill="#1B2420"/><g fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M 84 106 C 87 100 93 96 99 96 C 107 96 112 101 112 108 C 112 115 107 120 100 120 L 97 120"/><path d="M 100 120 C 108 120 113 125 113 133 C 113 141 107 146 99 146 C 93 146 87 143 84 137"/><path d="M 126 96 L 156 96 L 138 146"/></g></svg><span><b>트립루트37</b> · 개최</span></div>
+      <div class="lg"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M 120 42 A 78 78 0 1 1 42 120" fill="none" stroke="#3E9E5B" stroke-width="24" stroke-linecap="round"/><path d="M 42 120 A 78 78 0 0 1 120 42" fill="none" stroke="#EF7A2E" stroke-width="24" stroke-linecap="round"/><circle cx="120" cy="42" r="17" fill="#EF7A2E"/><g fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M 120 160 L 120 104"/><path d="M 120 128 C 120 104 104 90 82 90 C 82 112 96 128 120 128 Z"/><path d="M 120 112 C 120 90 136 78 158 78 C 158 100 144 112 120 112 Z"/></g></svg><span><b>리빙루트37</b> · 결제</span></div>
     </div>
+    <div class="sites"><span class="k">같이 만드는 곳</span>
+      <a href="https://2025after.com/">2025after<small>이 행사를 여는 회사</small></a>
+      <a href="https://triproute37.com/">트립루트37<small>여행 · 기록</small></a>
+      <a href="https://livingroute37.com/">리빙루트37<small>생활 제품 · 결제는 여기서</small></a>
+      <a href="https://run.triproute37.com/">고성 가족 마라톤<small>같은 방식으로 여는 대회</small></a>
+    </div>
+    <div class="foot">© 2026 triproute37.com · 후원 예정: 구례군 · 곡성군 · 순천시 · 보성군 · 장흥군 · 진도군 · 해남군 · 전라남도 · <a href="mailto:livingroute37@gmail.com" style="color:inherit">livingroute37@gmail.com</a></div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var FORM = "https://docs.google.com/forms/d/e/1FAIpQLSegS7PJEVtytLLYGbb3OkIgtdB4KJ9Jy0JwW6trtTLQVujtHg/viewform";
+  var course=document.getElementById('course'), adults=document.getElementById('adults'),
+      kids=document.getElementById('kids'), rooms=document.getElementById('rooms'),
+      name=document.getElementById('name'), email=document.getElementById('email'),
+      pay=document.getElementById('pay');
+  function won(n){return n.toLocaleString('ko-KR')+'원'}
+  function calc(){
+    var three = course.value==='3';
+    document.getElementById('baselabel').textContent = three ? '한 팀 · 3박 4일' : '한 팀 · 2박 3일';
+    document.getElementById('nights').textContent = three ? '리조트·콘도 3박' : '리조트·콘도 2박';
+    document.getElementById('meals').textContent = three ? '3회' : '2회';
+    document.getElementById('basefee').textContent = three ? '곧 공지' : won(870000);
+    document.getElementById('total').textContent = three ? '곧 공지' : won(870000);
+    pay.textContent = three ? '신청서 쓰기 · 금액은 따로 알려 드립니다' : '신청서 쓰기 · ' + won(870000);
+  }
+  pay.addEventListener('click', function(){
+    try{
+      var d = {course:course.options[course.selectedIndex].text, adults:adults.value, kids:kids.value, rooms:rooms.value, name:(name.value||'').trim(), email:(email.value||'').trim()};
+      localStorage.setItem('yisunsin-apply', JSON.stringify(d));
+    }catch(e){}
+  });
+  [course,adults,kids,rooms].forEach(function(el){el.addEventListener('change',calc)});
+  calc();
+})();
+</script>
 </body>
 </html>

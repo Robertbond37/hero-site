@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>구간 인증 — 이순신 로드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%231B2420'/%3E%3Cpath d='M5 20c3.4 0 3.4-5 6.8-5s3.4 5 6.8 5 3.4-5 6.8-5' stroke='%23EF7A2E' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='9' r='2.6' fill='%23EF7A2E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --paper:#FAF8F4; --surface:#FFFFFF; --line:#E6E2DA; --tint:#FBF3EB;
+  --ink:#1B2420; --body:#3A4742; --muted:#5B665F;
+  --sea:#3C6A55; --sea-soft:#3E9E5B; --sea-pale:#EAF2EC;
+  --fire:#EF7A2E; --fire-soft:#FDF1E6;
+  --shadow:0 1px 2px rgba(27,36,32,.04), 0 6px 18px rgba(27,36,32,.05);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#151C18; --surface:#1D2622; --line:#2C3833; --tint:#231D18;
+  --ink:#F6F4F0; --body:#C9D6CF; --muted:#8DA99B;
+  --sea:#8DA99B; --sea-soft:#6FC486; --sea-pale:#1C2A26;
+  --fire:#F0904C; --fire-soft:#2A2019;
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--body);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:520px;margin:0 auto;padding:28px 16px 60px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fire);font-weight:600}
+h1{font-family:"Noto Serif KR",serif;font-weight:900;font-size:28px;line-height:1.25;color:var(--ink);margin:6px 0 4px}
+.place{font-family:"Noto Serif KR",serif;font-size:20px;font-weight:600;color:var(--sea);margin:0 0 4px}
+.story{font-size:14px;color:var(--muted);margin:0 0 22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);padding:20px}
+label{display:block;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:6px}
+input{width:100%;font:inherit;font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;letter-spacing:.06em;padding:12px 14px;border:1.5px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink);text-align:center}
+input:focus{outline:none;border-color:var(--fire)}
+.hint{font-size:12px;color:var(--muted);margin:8px 0 0}
+.btn{display:block;width:100%;margin-top:16px;padding:16px;border:0;border-radius:5px;background:var(--fire);color:#fff;font:inherit;font-size:17px;font-weight:700;cursor:pointer}
+.btn[disabled]{opacity:.5;cursor:default}
+.status{margin-top:14px;font-size:14px;min-height:1.5em}
+.ok{background:var(--sea-pale);border:1px solid var(--sea-soft);border-radius:6px;padding:20px;text-align:center;margin-top:16px}
+.ok .big{font-family:"Noto Serif KR",serif;font-size:24px;font-weight:900;color:var(--sea);margin:0 0 6px}
+.ok .mono{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
+.warn{background:var(--fire-soft);border:1px solid var(--fire);border-radius:6px;padding:14px 16px;font-size:14px;margin-top:16px}
+.fine{font-size:12px;color:var(--muted);margin-top:26px;line-height:1.7}
+.fine a{color:var(--fire)}
+.list{margin:0;padding:0;list-style:none;font-size:14px}
+.list li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}
+.list li b{color:var(--ink);font-weight:500}
+.list li span{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">이순신 로드 · 구간 인증</div>
+  <h1 id="title">인증 지점</h1>
+  <p class="place" id="place"></p>
+  <p class="story" id="story"></p>
+
+  <div class="card" id="form">
+    <label for="no">참가번호 (기념품 키트의 팻말에 있습니다)</label>
+    <input id="no" inputmode="numeric" autocomplete="off" placeholder="0000" maxlength="6">
+    <p class="hint">위치 확인 허용을 물으면 <b>허용</b>해 주십시오. 지점 근처인지 확인하는 데만 씁니다.</p>
+    <button class="btn" id="go">여기서 인증</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="ok" id="done" hidden>
+    <p class="big">인증되었습니다</p>
+    <p class="mono" id="donemeta"></p>
+    <p style="margin:12px 0 0;font-size:14px">이 화면을 캡처해 두시면 완주 데스크에서 더 빠릅니다.</p>
+  </div>
+
+  <div class="warn" id="fallback" hidden>
+    인증이 안 되면 <b>참가번호 팻말을 들고 이 자리에서 가족 사진</b>을 찍어 두십시오. 완주 데스크에서 사진으로 인증합니다.
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <div class="eyebrow" style="color:var(--sea)">이 기기에서 인증한 지점</div>
+    <ul class="list" id="mine" style="margin-top:10px"><li><span>아직 없습니다</span></li></ul>
+  </div>
+
+  <p class="fine">
+    인증 기록은 참가번호·지점·시각·위치만 저장하며 완주 확인에만 씁니다.
+    문의 <a href="mailto:livingroute37@gmail.com">livingroute37@gmail.com</a> · <a href="https://hero.triproute37.com/">행사 홈페이지</a>
+  </p>
+</div>
+
+<script>
+// ===== 설정 — Google Form 연결 (README_인증페이지.md 참고) =====
+var FORM_ID = "";           // 인증 기록용 Google Form의 /d/e/ 뒤 긴 ID
+var ENTRY = {               // 각 질문의 entry.번호
+  no: "",      // 참가번호
+  point: "",   // 지점 코드
+  lat: "",     // 위도
+  lng: "",     // 경도
+  dist: "",    // 지점까지 거리(m)
+  ua: ""       // 기기 정보
+};
+var RADIUS_M = 800;         // 지점 좌표가 있을 때 인증을 허용하는 반경
+
+// 좌표는 시범 여행(2026-11-27~29)에서 표지판 자리를 확정한 뒤 넣는다. null이면 거리 검사 없이 위치만 기록한다.
+var POINTS = {
+  seokjugwan: { name:"구례 석주관 칠의사묘", story:"재건로의 첫 고을. 1597년 음력 8월 3일, 열다섯 명으로 여기서 시작했습니다.", lat:null, lng:null },
+  nagan:      { name:"순천 낙안읍성",       story:"순천에서 화약과 병기를 얻었습니다. 조선 농경마을이 통째로 남아 있는 곳.", lat:null, lng:null },
+  yeolseonru: { name:"보성 열선루",         story:"쌀을 얻은 고을. 「신에게는 아직 열두 척이 있습니다」 장계를 쓴 자리.", lat:null, lng:null },
+  hoeryeong:  { name:"장흥 회령진성",       story:"배 열두 척을 실제로 받은 자리. 회진항이 내려다보입니다.", lat:null, lng:null },
+  byeokpajin: { name:"진도 벽파진",         story:"명량 전에 보름 넘게 머문 자리. 이충무공 전첩비가 있습니다.", lat:null, lng:null },
+  uldolmok:   { name:"해남 울돌목 스카이워크", story:"명량. 물살을 발 아래로 보는 자리. 완주 인증은 데스크에서 받습니다.", lat:null, lng:null }
+};
+
+var q = new URLSearchParams(location.search);
+var code = q.get("p") || "";
+var P = POINTS[code];
+var $ = function(id){ return document.getElementById(id); };
+
+if (!P) {
+  $("title").textContent = "지점을 알 수 없습니다";
+  $("place").textContent = "표지판의 QR을 다시 찍어 주십시오.";
+  $("form").hidden = true;
+} else {
+  $("place").textContent = P.name;
+  $("story").textContent = P.story;
+  document.title = P.name + " — 구간 인증";
+}
+
+function loadMine(){ try { return JSON.parse(localStorage.getItem("yisroute_cert") || "[]"); } catch(e){ return []; } }
+function saveMine(list){ try { localStorage.setItem("yisroute_cert", JSON.stringify(list)); } catch(e){} }
+function renderMine(){
+  var list = loadMine(), ul = $("mine"); ul.innerHTML = "";
+  if (!list.length) { ul.innerHTML = "<li><span>아직 없습니다</span></li>"; return; }
+  list.forEach(function(r){
+    var li = document.createElement("li");
+    li.innerHTML = "<b>" + (POINTS[r.point] ? POINTS[r.point].name : r.point) + "</b><span>" + r.no + " · " + r.time.slice(5,16).replace("T"," ") + "</span>";
+    ul.appendChild(li);
+  });
+}
+renderMine();
+try { var last = loadMine().slice(-1)[0]; if (last) $("no").value = last.no; } catch(e){}
+
+function dist(a1,o1,a2,o2){
+  var R=6371000, d2r=Math.PI/180, dA=(a2-a1)*d2r, dO=(o2-o1)*d2r;
+  var x=Math.sin(dA/2)*Math.sin(dA/2)+Math.cos(a1*d2r)*Math.cos(a2*d2r)*Math.sin(dO/2)*Math.sin(dO/2);
+  return Math.round(2*R*Math.atan2(Math.sqrt(x),Math.sqrt(1-x)));
+}
+function getPos(){
+  return new Promise(function(res){
+    if (!navigator.geolocation) return res(null);
+    navigator.geolocation.getCurrentPosition(
+      function(p){ res({lat:p.coords.latitude, lng:p.coords.longitude, acc:p.coords.accuracy}); },
+      function(){ res(null); }, {enableHighAccuracy:true, timeout:12000, maximumAge:60000});
+  });
+}
+function send(rec){
+  if (!FORM_ID || !ENTRY.no) return Promise.resolve(false);
+  var fd = new FormData();
+  fd.append(ENTRY.no, rec.no); fd.append(ENTRY.point, rec.point);
+  if (ENTRY.lat) fd.append(ENTRY.lat, rec.lat == null ? "" : rec.lat);
+  if (ENTRY.lng) fd.append(ENTRY.lng, rec.lng == null ? "" : rec.lng);
+  if (ENTRY.dist) fd.append(ENTRY.dist, rec.dist == null ? "" : rec.dist);
+  if (ENTRY.ua) fd.append(ENTRY.ua, navigator.userAgent.slice(0,120));
+  return fetch("https://docs.google.com/forms/d/e/" + FORM_ID + "/formResponse", {method:"POST", mode:"no-cors", body:fd})
+    .then(function(){ return true; }, function(){ return false; });
+}
+
+$("go").addEventListener("click", async function(){
+  var no = $("no").value.trim();
+  if (!/^\d{3,6}$/.test(no)) { $("status").textContent = "참가번호를 숫자로 적어 주십시오."; $("no").focus(); return; }
+  $("go").disabled = true; $("status").textContent = "위치를 확인하는 중…";
+  var pos = await getPos();
+  var d = null;
+  if (pos && P.lat != null) {
+    d = dist(pos.lat, pos.lng, P.lat, P.lng);
+    if (d > RADIUS_M) {
+      $("status").textContent = "지점에서 약 " + (d/1000).toFixed(1) + "km 떨어져 있습니다. 표지판 앞에서 다시 눌러 주십시오.";
+      $("go").disabled = false; return;
+    }
+  }
+  var rec = { no:no, point:code, time:new Date().toISOString(), lat:pos?pos.lat:null, lng:pos?pos.lng:null, dist:d };
+  $("status").textContent = "기록하는 중…";
+  var sent = await send(rec);
+  var list = loadMine().filter(function(r){ return !(r.no===no && r.point===code); }); list.push(rec); saveMine(list); renderMine();
+  $("form").hidden = true; $("done").hidden = false;
+  $("donemeta").textContent = no + " · " + P.name + " · " + rec.time.slice(0,16).replace("T"," ") + (sent ? "" : " · 기기에만 저장됨");
+  if (!sent) $("fallback").hidden = false;
+  if (!pos) $("fallback").hidden = false;
+});
+</script>
+</body>
+</html>
